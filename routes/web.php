@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 
 // # Auth::routes();
+// Home - no need to be logged in
+Route::get('/')->name('welcome')->uses('HomeController@index')->middleware('guest');
+
 
 // Auth
 Route::get('login')->name('login')->uses('Auth\LoginController@showLoginForm')->middleware('guest');
 Route::post('login')->name('login.attempt')->uses('Auth\LoginController@login')->middleware('guest');
 Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
-
-// Home - no need to be logged in
-Route::get('/')->name('welcome')->uses('HomeController')->middleware('guest');
 
 // Dashboard (need to be logged in)
 Route::get('/home')->name('dashboard')->uses('DashboardController')->middleware('auth');

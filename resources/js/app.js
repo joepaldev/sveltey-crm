@@ -1,4 +1,4 @@
-
+import { InertiaApp } from '@inertiajs/inertia-svelte'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Svelte and other libraries. It is a great starting point when
@@ -18,15 +18,15 @@
 //window.app = app;
 // export default app;
 //
-import { InertiaApp } from '@inertiajs/inertia-svelte'
 
-let app = document.getElementById('app')
+// let app = document.getElementById('app')
+
+const app = document.getElementById('app')
 
 new InertiaApp({
   target: app,
   props: {
     initialPage: JSON.parse(app.dataset.page),
-    resolveComponent: name =>
-      import(`./Pages/${name}.svelte`).then(module => module.default),
+    resolveComponent: name => require(`./Pages/${name}.svelte`).default,
   },
 })

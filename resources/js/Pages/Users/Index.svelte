@@ -49,7 +49,7 @@
               class="px-6 py-4 flex items-center focus:text-indigo-500"
               href={route('users.edit', user.id)}>
               {#if user.photo}
-                <img class="block w-5 h-5 rounded-full mr-2 -my-2" src={user.photo} />
+                <img class="block w-5 h-5 rounded-full mr-2 -my-2" src={user.photo} alt="round user" />
               {/if}
               {user.name}
               {#if user.deleted_at}

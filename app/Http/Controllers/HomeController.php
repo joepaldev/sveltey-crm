@@ -6,8 +6,8 @@ use Inertia\Inertia;
 
 class HomeController extends Controller
 {
-    public function __invoke()
+    public function index()
     {
-        return Inertia::render('Welcome');
+        return Inertia::render('Welcome/Index');
     }
 }
