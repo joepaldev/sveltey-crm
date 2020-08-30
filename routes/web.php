@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // # Auth::routes();
 // Home - no need to be logged in
-Route::get('/')->name('welcome')->uses('HomeController@index')->middleware('guest');
+Route::get('/')->name('welcome')->uses('HomeController');
 
 
 // Auth
@@ -32,9 +32,9 @@ Route::get('customers')->name('customers')->uses('CustomersController@index')->m
 Route::get('customers/create')->name('customers.create')->uses('CustomersController@create')->middleware('auth');
 Route::post('customers')->name('customers.store')->uses('CustomersController@store')->middleware('auth');
 Route::get('customers/{customer}/edit')->name('customers.edit')->uses('CustomersController@edit')->middleware('auth');
-Route::put('customers/{contact}')->name('customers.update')->uses('CustomersController@update')->middleware('auth');
-Route::delete('customers/{contact}')->name('customers.destroy')->uses('CustomersController@destroy')->middleware('auth');
-Route::put('customers/{contact}/restore')->name('customers.restore')->uses('CustomersController@restore')->middleware('auth');
+Route::put('customers/{customer}')->name('customers.update')->uses('CustomersController@update')->middleware('auth');
+Route::delete('customers/{customer}')->name('customers.destroy')->uses('CustomersController@destroy')->middleware('auth');
+Route::put('customers/{customer}/restore')->name('customers.restore')->uses('CustomersController@restore')->middleware('auth');
 
 // 500 error
 Route::get('500', function () {
