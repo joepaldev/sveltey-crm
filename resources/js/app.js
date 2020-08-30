@@ -7,12 +7,25 @@
 
 require('./bootstrap');
 
-import App from "./components/App.svelte";
+// TODO how to fix login routes (basic svelte components) to use inertia
+// import App from "./components/App.svelte";
+//
+//const app = new App({
+//  target: document.body
+//});
 
-const app = new App({
-  target: document.body
-});
+//window.app = app;
+// export default app;
+//
+import { InertiaApp } from '@inertiajs/inertia-svelte'
 
-window.app = app;
+let app = document.getElementById('app')
 
-export default app;
+new InertiaApp({
+  target: app,
+  props: {
+    initialPage: JSON.parse(app.dataset.page),
+    resolveComponent: name =>
+      import(`@/Pages/${name}.svelte`).then(module => module.default),
+  },
+})
