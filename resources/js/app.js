@@ -1,4 +1,6 @@
+//require('./bootstrap');
 
+import { InertiaApp } from '@inertiajs/inertia-svelte'
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Svelte and other libraries. It is a great starting point when
@@ -6,7 +8,6 @@
  */
 
 // (the followign bootstrap require not needed for svelte
-// require('./bootstrap');
 
 // TODO how to fix login routes (basic svelte components) to use inertia
 // import App from "./components/App.svelte";
@@ -18,15 +19,17 @@
 //window.app = app;
 // export default app;
 //
-import { InertiaApp } from '@inertiajs/inertia-svelte'
 
-let app = document.getElementById('app')
+// let app = document.getElementById('app')
+
+const app = document.getElementById('app')
 
 new InertiaApp({
   target: app,
   props: {
     initialPage: JSON.parse(app.dataset.page),
     resolveComponent: name =>
-      import(`./Pages/${name}.svelte`).then(module => module.default),
-  },
+     /* require(`./Pages/${name}.svelte`).default,*/
+    import(`./Pages/${name}.svelte`).then(module => module.default),
+  }
 })
