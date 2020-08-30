@@ -21,9 +21,11 @@ Route::get('login')->name('login')->uses('Auth\LoginController@showLoginForm')->
 Route::post('login')->name('login.attempt')->uses('Auth\LoginController@login')->middleware('guest');
 Route::post('logout')->name('logout')->uses('Auth\LoginController@logout');
 
-// Home / Dashboard
-Route::get('/home')->name('home')->uses('DashboardController')->middleware('auth');
+// Home - no need to be logged in
+Route::get('/')->name('welcome')->uses('HomeController')->middleware('guest');
 
+// Dashboard (need to be logged in)
+Route::get('/home')->name('dashboard')->uses('DashboardController')->middleware('auth');
 
 // Customers
 Route::get('customers')->name('customers')->uses('CustomersController@index')->middleware('remember', 'auth');

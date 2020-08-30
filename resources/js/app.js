@@ -5,7 +5,8 @@
  * building robust, powerful web applications using Svelte and Laravel.
  */
 
-require('./bootstrap');
+// (the followign bootstrap require not needed for svelte
+// require('./bootstrap');
 
 // TODO how to fix login routes (basic svelte components) to use inertia
 // import App from "./components/App.svelte";
@@ -26,6 +27,6 @@ new InertiaApp({
   props: {
     initialPage: JSON.parse(app.dataset.page),
     resolveComponent: name =>
-      import(`@/Pages/${name}.svelte`).then(module => module.default),
+      import(`./Pages/${name}.svelte`).then(module => module.default),
   },
 })
